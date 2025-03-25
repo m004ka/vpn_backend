@@ -5,6 +5,7 @@ import org.application.prod.dto.CreatePaymentDTO;
 import org.application.prod.dto.ResponsePayDTO;
 import org.application.prod.dto.TelegramUserDTO;
 import org.application.prod.models.PaymentResponse;
+import org.application.prod.models.TelegramUser;
 import org.application.prod.service.PaymentService;
 import org.application.prod.service.TelegramControllerServiceImpl;
 import org.springframework.http.HttpStatus;
@@ -28,8 +29,8 @@ public class TelegramController {
     }
 
     @PostMapping("/create")
-    public String createUser(@RequestBody TelegramUserDTO telegramUserDTO){
-        telegramControllerService.
+    public String  createUser(@RequestBody TelegramUserDTO telegramUserDTO){
+       return telegramControllerService.createUser(telegramUserDTO).toString();
     }
 
     @PostMapping("/payment/create")
