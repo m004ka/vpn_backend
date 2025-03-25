@@ -1,4 +1,4 @@
-package org.application.prod.yooKassa.models;
+package org.application.prod.models;
 
 import lombok.Data;
 import lombok.RequiredArgsConstructor;

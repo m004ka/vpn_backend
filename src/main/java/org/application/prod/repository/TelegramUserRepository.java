@@ -1,6 +1,6 @@
 package org.application.prod.repository;
 
-import org.application.prod.telegram.models.TelegramUser;
+import org.application.prod.models.TelegramUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

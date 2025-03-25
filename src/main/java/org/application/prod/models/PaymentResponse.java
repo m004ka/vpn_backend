@@ -1,4 +1,4 @@
-package org.application.prod.yooKassa.models;
+package org.application.prod.models;
 
 import lombok.Data;
 
@@ -33,4 +33,6 @@ public class PaymentResponse {
         private String account_id;
         private String gateway_id;
     }
+
+
 }
