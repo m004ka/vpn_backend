@@ -1,31 +1,23 @@
 package org.application.prod.client;
 
-import org.application.prod.dto.ResponsePayDTO;
-import org.springframework.beans.factory.annotation.Value;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.application.prod.dto.PaymentDTO;
+import org.application.prod.models.Payment;
 import org.springframework.stereotype.Service;
-import org.springframework.web.reactive.function.client.WebClient;
-import reactor.core.publisher.Mono;
 
+@Slf4j
 @Service
+@RequiredArgsConstructor
 public class TelegramClient {
 
-    @Value("${telegram.host}")
-    private String baseUrl;
+    private final TelegramFeignClient telegramFeignClient;
 
-    private final WebClient webClient;
-
-    public TelegramClient(@Value("${telegram.host}") String baseUrl) {
-        this.webClient = WebClient.builder().baseUrl(baseUrl).build();
-    }
-
-    public Mono<String> updateTelegramPay(ResponsePayDTO responsePayDTO) {
-        return webClient.post()
-                .uri("/updatePayment")
-                .bodyValue(responsePayDTO)
-                .retrieve()
-                .bodyToMono(String.class)
-                .onErrorResume(e -> {
-                    return Mono.just("error: " + e.getMessage());
-                });
+    public void updateTelegramPayment(Payment payment){
+        try {
+             telegramFeignClient.updateTgPayment(PaymentDTO.toPaymentDTO(payment));
+        } catch (Exception e){
+            log.warn("Ошибка при отправкий update платежа на фронт тг :" + e.getMessage());
+        }
     }
 }

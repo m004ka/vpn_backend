@@ -15,10 +15,13 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TelegramUser {
-    @Id
-    private Long chatId;
 
+    //todo Если приходит без юзернейма то надо делать id + номер айди
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
+
+    private Long chatId;
     private String firstName;
     private String lastName;
     private String username;

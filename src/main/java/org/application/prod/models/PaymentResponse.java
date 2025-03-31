@@ -1,11 +1,13 @@
 package org.application.prod.models;
 
+import lombok.Builder;
 import lombok.Data;
 
 import java.time.ZonedDateTime;
 import java.util.Map;
 
 @Data
+@Builder
 public class PaymentResponse {
     private String id;
     private String status;

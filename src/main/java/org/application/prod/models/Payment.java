@@ -23,7 +23,11 @@ public class Payment {
     private Boolean receipt;
     private String mail;
     private Double value;
-    private Long orderId;
+
+    @Column(name = "order_id")
+    private String orderId;
+
     private String yookassaPaymentId;
     private String status;
 }
+

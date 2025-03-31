@@ -12,4 +12,6 @@ public class CreatePaymentDTO {
     private Boolean receipt;
 
     private Double value;
+
+    private String order_id;
 }
