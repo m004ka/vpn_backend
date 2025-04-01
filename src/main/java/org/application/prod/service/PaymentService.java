@@ -6,7 +6,6 @@ import org.application.prod.client.PaymentClient;
 import org.application.prod.dto.CreatePaymentDTO;
 import org.application.prod.dto.NotificationDTO;
 import org.application.prod.dto.PaymentDTO;
-import org.application.prod.dto.WebhookNotificationDTO;
 import org.application.prod.models.Payment;
 import org.application.prod.models.PaymentResponse;
 import org.application.prod.models.TelegramUser;
