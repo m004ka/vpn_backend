@@ -42,7 +42,7 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public void updateUserNotification(TelegramUser user, Payment payment){
+    public void updateUserNotification(TelegramUser user, Payment payment) {
         user.getPayments().add(payment);
         userRepository.save(user);
 
