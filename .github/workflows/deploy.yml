@@ -48,6 +48,9 @@ jobs:
             exit 1
           fi
 
+      - name: List files in target folder
+        run: ls -al target/
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
 
