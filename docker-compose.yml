@@ -1,0 +1,37 @@
+services:
+  app:
+    build: .
+    container_name: java_prod_app
+    ports:
+      - "8001:8080"
+    depends_on:
+      - db
+    environment:
+      DB_CONNECT: jdbc:postgresql://db:5432/sv_prod
+      DB_USER: postgres
+      DB_PASSWORD: admin
+      TG_HOST: 94.125.100.205:8090
+      PAYMENT_HOST: 94.125.100.205:8070
+      VPN_HOST: https://develop-m004ka.ru:7333/lQ4Sfx2VaytIW0c/
+      VPN_LOGIN: CGKTVmdSsn
+      VPN_PASSWORD: 8guVCe99sj
+      VPN_CONFIG_ID: 6
+      VPN_PROTOCOL: vless://
+      VPN_CONNECT: "@develop-m004ka.ru:500?type=tcp&security=tls&fp=chrome&alpn=h3%2Ch2%2Chttp%2F1.1&flow=xtls-rprx-vision#forClients-"
+
+  db:
+    image: postgres:14
+    container_name: postgres_prod_db
+    restart: always
+    environment:
+      POSTGRES_DB: sv_prod
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_prod_data:/var/lib/postgresql/data
+
+
+volumes:
+  postgres_prod_data:
